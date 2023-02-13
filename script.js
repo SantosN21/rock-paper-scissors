@@ -32,12 +32,16 @@ function playRound(playerSelection, computerSelection) {
     return "You win Scissors beats Paper.";
   }
 }
+const computerSelection = getComputerChoice();
+console.log(playRound(playerSelection, computerSelection));
 function game() {
-  for (let i = 0; i < 5; i++) {
+  for (let i = 1; i < 5; i++) {
+    let playerSelection = prompt("Please enter Rock, Paper or Scissors.");
+    const computerSelection = getComputerChoice();
     console.log(playRound(playerSelection, computerSelection));
   }
 }
-const computerSelection = getComputerChoice();
-console.log(playRound(playerSelection, computerSelection));
+game()
+
 
 
