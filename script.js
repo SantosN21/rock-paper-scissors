@@ -41,7 +41,7 @@ function game() {
   for (let i = 1; i <= 5; i++) {
     let playerSelection = prompt("Please enter Rock, Paper or Scissors.");
     const computerSelection = getComputerChoice();
-    console.log('1', playRound(playerSelection, computerSelection));
+    console.log(playRound(playerSelection, computerSelection));
   }
   if (playerScore > compScore) {
     return `Congratulations! You've won the game of Rock, Paper, Scissors!\nFinal Score
