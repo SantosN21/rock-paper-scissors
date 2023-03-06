@@ -1,48 +1,106 @@
 let playerScore = 0;
 let compScore = 0;
+let draws = 0;
+const rockButton = document.querySelector(".rock");
+const paperButton = document.querySelector(".paper");
+const scissorsButton = document.querySelector(".scissors");
+const outcomeDiv = document.querySelector(".outcome");
+const p = document.createElement("p");
+const p2 = document.createElement("p");
+const h2 = document.createElement("h2");
+
+
 function getComputerChoice() {
-  const myArray = ["Rock", "Paper", "Scissors"];
+  const myArray = ["rock", "paper", "scissors"];
   let randomValue = myArray[Math.floor(Math.random() * myArray.length)];
   return randomValue;
 }
+
 function playRound(playerSelection, computerSelection) {
-  playerSelection = playerSelection.toLowerCase();
-  computerSelection = getComputerChoice().toLowerCase();
   if (playerSelection == computerSelection) {
-    return "Tie game!";
-  }
-  else if (playerSelection == "rock" && computerSelection == "paper"){
+    draws++;
+    p.innerText = `You tied you both picked ${playerSelection}`
+    p2.innerText = `Computer wins: ${compScore} Player Wins: ${playerScore} Draws: ${draws}`;
+    outcomeDiv.appendChild(p);
+    outcomeDiv.appendChild(p2);
+  } else if (playerSelection == "rock" && computerSelection == "paper") {
     compScore++;
-    return "You lose Paper beats Rock.";
-  }
-  else if (playerSelection == "scissors" && computerSelection == "rock"){
+    p.innerText = "You lose Paper beats Rock.";
+    p2.innerText = `Computer wins: ${compScore} Player Wins: ${playerScore} Draws: ${draws}`
+    outcomeDiv.appendChild(p);
+    outcomeDiv.appendChild(p2);
+  } else if (playerSelection == "scissors" && computerSelection == "rock") {
     compScore++;
-    return "You lose Rock beats Scissors.";
-  }
-  else if (playerSelection == "paper" && computerSelection == "scissors"){
+    p.innerText = "You lose Rock beats Scissors.";
+    p2.innerText = `Computer wins: ${compScore} Player Wins: ${playerScore} Draws: ${draws}`;
+    outcomeDiv.appendChild(p);
+    outcomeDiv.appendChild(p2);
+  } else if (playerSelection == "paper" && computerSelection == "scissors") {
     compScore++;
-    return "You lose Scissors beats Paper.";
-  }
-  else if (playerSelection == "paper" && computerSelection == "rock"){
+    p.innerText = "You lose Scissors beats Paper.";
+    p2.innerText = `Computer wins: ${compScore} Player Wins: ${playerScore} Draws: ${draws}`;
+    outcomeDiv.appendChild(p);
+    outcomeDiv.appendChild(p2);
+  } else if (playerSelection == "paper" && computerSelection == "rock") {
     playerScore++;
-    return "You win Paper beats Rock.";
-  }
-  else if (playerSelection == "rock" && computerSelection == "scissors"){
+    p.innerText = "You win Paper beats Rock.";
+    p2.innerText = `Computer wins: ${compScore} Player Wins: ${playerScore} Draws: ${draws}`;
+    outcomeDiv.appendChild(p);
+    outcomeDiv.appendChild(p2);
+  } else if (playerSelection == "rock" && computerSelection == "scissors") {
     playerScore++;
-    return "You win Rock beats Scissors.";
-  }
-  else if (playerSelection == "scissors" && computerSelection == "paper"){
+    p.innerText = "You win Rock beats Scissors.";
+    p2.innerText = `Computer wins: ${compScore} Player Wins: ${playerScore} Draws: ${draws}`;
+    outcomeDiv.appendChild(p);
+    outcomeDiv.appendChild(p2);
+  } else if (playerSelection == "scissors" && computerSelection == "paper") {
     playerScore++;
-    return "You win Scissors beats Paper.";
+    p.innerText = "You win Scissors beats Paper.";
+    p2.innerText = `Computer wins: ${compScore} Player Wins: ${playerScore} Draws: ${draws}`;
+    outcomeDiv.appendChild(p);
+    outcomeDiv.appendChild(p2);
   }
 }
 
-function game() {
-  for (let i = 1; i <= 5; i++) {
-    let playerSelection = prompt("Please enter Rock, Paper or Scissors.");
+rockButton.addEventListener("click", () => {
+  const computerSelection = getComputerChoice();
+  const playerSelection = "rock";
+  playRound(playerSelection, computerSelection);
+  checkForWinner(playerScore, compScore);
+});
+
+paperButton.addEventListener("click", () => {
+  const computerSelection = getComputerChoice() 
+  const playerSelection = "paper";
+  playRound(playerSelection, computerSelection);
+  checkForWinner(playerScore, compScore);
+});
+scissorsButton.addEventListener("click", () => {
+  const computerSelection = getComputerChoice() 
+  const playerSelection = "scissors";
+  playRound(playerSelection, computerSelection);
+  checkForWinner(playerScore, compScore);
+});
+
+const checkForWinner = (playerScore, compScore) => {
+  if (playerScore === 5) {
+    h2.classList.add("player-won");
+    h2.innerText = `You won ${playerScore} to ${compScore} great job beating the computer!`;
+    outcomeDiv.append(h2);
+  }
+  else if (compScore == 5) {
+    h2.classList.add("player-won");
+    h2.innerText = `You lost ${playerScore} to ${compScore} better luck next time!`;
+    outcomeDiv.append(h2);
+  }
+}
+
+/*function game() {
+  
+    let playerSelection;
     const computerSelection = getComputerChoice();
     console.log(playRound(playerSelection, computerSelection));
-  }
+  
   if (playerScore > compScore) {
     return `Congratulations! You've won the game of Rock, Paper, Scissors!\nFinal Score
     \nPlayer Score: ${playerScore} \nComputer Score: ${compScore}`;
@@ -57,7 +115,4 @@ function game() {
   }
 }
 console.log(game());
-
-
-
-
+*/
