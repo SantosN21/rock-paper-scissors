@@ -95,24 +95,4 @@ const checkForWinner = (playerScore, compScore) => {
   }
 }
 
-/*function game() {
-  
-    let playerSelection;
-    const computerSelection = getComputerChoice();
-    console.log(playRound(playerSelection, computerSelection));
-  
-  if (playerScore > compScore) {
-    return `Congratulations! You've won the game of Rock, Paper, Scissors!\nFinal Score
-    \nPlayer Score: ${playerScore} \nComputer Score: ${compScore}`;
-  }
-  else if (compScore > playerScore) {
-    return `Better luck next time! Although you didn't win this round of Rock, Paper, Scissors, don't get discouraged. \nFinal Score
-    \nPlayer Score: ${playerScore} \nComputer Score: ${compScore}`;
-  }
-  else {
-    return `It's a tie! Both players chose the same option. Good effort, let's play again to determine the ultimate winner! \nFinal Score
-    \nPlayer Score: ${playerScore} \nComputer Score: ${compScore}`
-  }
-}
-console.log(game());
-*/
+
