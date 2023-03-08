@@ -8,6 +8,8 @@ const outcomeDiv = document.querySelector(".outcome");
 const p = document.createElement("p");
 const p2 = document.createElement("p");
 const h2 = document.createElement("h2");
+const modalObject = document.getElementById("myModal");
+const modal = document.querySelector(".modal-content");
 
 
 const getComputerChoice = () => {
@@ -20,43 +22,43 @@ const playRound = (playerSelection, computerSelection) =>{
   if (playerSelection == computerSelection) {
     draws++;
     p.innerText = `You tied you both picked ${playerSelection}`
-    p2.innerText = `Computer wins: ${compScore} Player Wins: ${playerScore} Draws: ${draws}`;
+    p2.innerText = `|| Computer wins: ${compScore} || Player Wins: ${playerScore} || Draws: ${draws} ||`;
     outcomeDiv.appendChild(p);
     outcomeDiv.appendChild(p2);
   } else if (playerSelection == "rock" && computerSelection == "paper") {
     compScore++;
     p.innerText = "You lose Paper beats Rock.";
-    p2.innerText = `Computer wins: ${compScore} Player Wins: ${playerScore} Draws: ${draws}`
+    p2.innerText = `|| Computer wins: ${compScore} || Player Wins: ${playerScore} || Draws: ${draws} ||`;
     outcomeDiv.appendChild(p);
     outcomeDiv.appendChild(p2);
   } else if (playerSelection == "scissors" && computerSelection == "rock") {
     compScore++;
     p.innerText = "You lose Rock beats Scissors.";
-    p2.innerText = `Computer wins: ${compScore} Player Wins: ${playerScore} Draws: ${draws}`;
+    p2.innerText = `|| Computer wins: ${compScore} || Player Wins: ${playerScore} || Draws: ${draws} ||`;
     outcomeDiv.appendChild(p);
     outcomeDiv.appendChild(p2);
   } else if (playerSelection == "paper" && computerSelection == "scissors") {
     compScore++;
     p.innerText = "You lose Scissors beats Paper.";
-    p2.innerText = `Computer wins: ${compScore} Player Wins: ${playerScore} Draws: ${draws}`;
+    p2.innerText = `|| Computer wins: ${compScore} || Player Wins: ${playerScore} || Draws: ${draws} ||`;
     outcomeDiv.appendChild(p);
     outcomeDiv.appendChild(p2);
   } else if (playerSelection == "paper" && computerSelection == "rock") {
     playerScore++;
     p.innerText = "You win Paper beats Rock.";
-    p2.innerText = `Computer wins: ${compScore} Player Wins: ${playerScore} Draws: ${draws}`;
+    p2.innerText = `|| Computer wins: ${compScore} || Player Wins: ${playerScore} || Draws: ${draws} ||`;
     outcomeDiv.appendChild(p);
     outcomeDiv.appendChild(p2);
   } else if (playerSelection == "rock" && computerSelection == "scissors") {
     playerScore++;
     p.innerText = "You win Rock beats Scissors.";
-    p2.innerText = `Computer wins: ${compScore} Player Wins: ${playerScore} Draws: ${draws}`;
+    p2.innerText = `|| Computer wins: ${compScore} || Player Wins: ${playerScore} || Draws: ${draws} ||`;
     outcomeDiv.appendChild(p);
     outcomeDiv.appendChild(p2);
   } else if (playerSelection == "scissors" && computerSelection == "paper") {
     playerScore++;
     p.innerText = "You win Scissors beats Paper.";
-    p2.innerText = `Computer wins: ${compScore} Player Wins: ${playerScore} Draws: ${draws}`;
+    p2.innerText = `|| Computer wins: ${compScore} || Player Wins: ${playerScore} || Draws: ${draws} ||`;
     outcomeDiv.appendChild(p);
     outcomeDiv.appendChild(p2);
   }
@@ -86,12 +88,14 @@ const checkForWinner = (playerScore, compScore) => {
   if (playerScore === 5) {
     h2.classList.add("player-won");
     h2.innerText = `You won ${playerScore} to ${compScore} great job beating the computer!`;
-    outcomeDiv.append(h2);
+    modal.append(h2);
+    modalObject.style.display = "block";
   }
   else if (compScore == 5) {
     h2.classList.add("player-won");
     h2.innerText = `You lost ${playerScore} to ${compScore} better luck next time!`;
-    outcomeDiv.append(h2);
+    modal.append(h2);
+    modalObject.style.display = "block";
   }
 }
 
