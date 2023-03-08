@@ -88,13 +88,13 @@ const checkForWinner = (playerScore, compScore) => {
   if (playerScore === 5) {
     h2.classList.add("player-won");
     h2.innerText = `You won ${playerScore} to ${compScore} great job beating the computer!`;
-    modal.append(h2);
+    modal.prepend(h2);
     modalObject.style.display = "block";
   }
   else if (compScore == 5) {
     h2.classList.add("player-won");
     h2.innerText = `You lost ${playerScore} to ${compScore} better luck next time!`;
-    modal.append(h2);
+    modal.prepend(h2);
     modalObject.style.display = "block";
   }
 }
