@@ -10,13 +10,13 @@ const p2 = document.createElement("p");
 const h2 = document.createElement("h2");
 
 
-function getComputerChoice() {
+const getComputerChoice = () => {
   const myArray = ["rock", "paper", "scissors"];
   let randomValue = myArray[Math.floor(Math.random() * myArray.length)];
   return randomValue;
 }
 
-function playRound(playerSelection, computerSelection) {
+const playRound = (playerSelection, computerSelection) =>{
   if (playerSelection == computerSelection) {
     draws++;
     p.innerText = `You tied you both picked ${playerSelection}`
