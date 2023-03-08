@@ -11,17 +11,16 @@ const h2 = document.createElement("h2");
 const modalObject = document.getElementById("myModal");
 const modal = document.querySelector(".modal-content");
 
-
 const getComputerChoice = () => {
   const myArray = ["rock", "paper", "scissors"];
   let randomValue = myArray[Math.floor(Math.random() * myArray.length)];
   return randomValue;
-}
+};
 
-const playRound = (playerSelection, computerSelection) =>{
+const playRound = (playerSelection, computerSelection) => {
   if (playerSelection == computerSelection) {
     draws++;
-    p.innerText = `You tied you both picked ${playerSelection}`
+    p.innerText = `You tied you both picked ${playerSelection}`;
     p2.innerText = `|| Computer wins: ${compScore} || Player Wins: ${playerScore} || Draws: ${draws} ||`;
     outcomeDiv.appendChild(p);
     outcomeDiv.appendChild(p2);
@@ -62,7 +61,7 @@ const playRound = (playerSelection, computerSelection) =>{
     outcomeDiv.appendChild(p);
     outcomeDiv.appendChild(p2);
   }
-}
+};
 
 rockButton.addEventListener("click", () => {
   const computerSelection = getComputerChoice();
@@ -72,13 +71,13 @@ rockButton.addEventListener("click", () => {
 });
 
 paperButton.addEventListener("click", () => {
-  const computerSelection = getComputerChoice() 
+  const computerSelection = getComputerChoice();
   const playerSelection = "paper";
   playRound(playerSelection, computerSelection);
   checkForWinner(playerScore, compScore);
 });
 scissorsButton.addEventListener("click", () => {
-  const computerSelection = getComputerChoice() 
+  const computerSelection = getComputerChoice();
   const playerSelection = "scissors";
   playRound(playerSelection, computerSelection);
   checkForWinner(playerScore, compScore);
@@ -90,13 +89,10 @@ const checkForWinner = (playerScore, compScore) => {
     h2.innerText = `You won ${playerScore} to ${compScore} great job beating the computer!`;
     modal.prepend(h2);
     modalObject.style.display = "block";
-  }
-  else if (compScore == 5) {
+  } else if (compScore == 5) {
     h2.classList.add("player-won");
     h2.innerText = `You lost ${playerScore} to ${compScore} better luck next time!`;
     modal.prepend(h2);
     modalObject.style.display = "block";
   }
-}
-
-
+};
